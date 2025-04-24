@@ -1,0 +1,16 @@
+# Virtual environments
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Editor settings
+.vscode/
+
+# macOS metadata
+.DS_Store
+
+# Log files
+*.log
