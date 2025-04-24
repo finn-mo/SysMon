@@ -6,7 +6,7 @@
 - Disk usage summary for each partition
 - Memory usage breakdown
 - Per-core CPU load with percent usage
-- Network hostname and IP address
+- Network IP address
 - Tabular formatting for easy reading
 
 ## Example Output
