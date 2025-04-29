@@ -13,13 +13,15 @@ Output is formatted using tabulate and colorized using colorama for readability.
 import socket
 import argparse
 import urllib.request
+import os
+from datetime import datetime
 
 import psutil
 from tabulate import tabulate
 from colorama import init, Fore
 init(autoreset=True)
 
-VERSION = 'v1.1.0'
+VERSION = 'v1.1.1'
 
 
 def main():
@@ -42,6 +44,7 @@ def main():
 
 
 def get_args():
+    """Parse and return command line arguments."""
     parser = argparse.ArgumentParser(description='SysMon: A simple CLI tool to monitor and log system performance.')
 
     parser.add_argument('--disk', action='store_true', help='Display disk usage')
@@ -55,11 +58,13 @@ def get_args():
 
 
 def show_header():
+    """Show program header."""
     title = f'System Monitor - {VERSION}'
     print('\n' + Fore.GREEN + title.center(50, '=') + '\n')
 
 
 def show_disk_usage():
+    """Show total disk space, used, free, and usage %."""
     table = []
     headers = ['Filesystem', 'Size', 'Used', 'Avail', 'Use%', 'Mounted on']
     for partition in psutil.disk_partitions(all=False):
@@ -82,6 +87,7 @@ def show_disk_usage():
 
 
 def show_memory_usage():
+    """Show total system memory, used, available."""
     try:
         mem = psutil.virtual_memory()
         table = [[
@@ -100,6 +106,7 @@ def show_memory_usage():
 
 
 def show_cpu_load():
+    """Show % usage for each CPU core."""
     try:
         cores = psutil.cpu_percent(interval=1, percpu=True)
         table = [[f'Core {i}', f'{p:.1f}%'] for i, p in enumerate(cores)]
@@ -112,6 +119,7 @@ def show_cpu_load():
 
 
 def show_network_info():
+    """Show hostname, local IP, and public IP."""
     try:
         hostname = socket.gethostname()
         local_ip = socket.gethostbyname(hostname)
@@ -132,6 +140,7 @@ def show_network_info():
 
 
 def get_public_ip():
+    """Get public IP address from ipify.org."""
     try:
         with urllib.request.urlopen('https://api.ipify.org', timeout=5) as response:
             return response.read().decode('utf-8')

@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.1.1] - 2025-04-29
+### Changed
+- Added docstrings to functions, following PEP 257 formatting guidelines for documentation
+
 ## [1.1.0] – 2025-04-24
 ### Added
 - `--disk`, `--mem`, `--cpu`, `--net`, and `--all` flags to selectively display system metrics
