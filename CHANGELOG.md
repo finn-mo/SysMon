@@ -5,6 +5,16 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-04-29
+### Added
+- `--log` flag to enable system output and error logging to `logs/sysmon.log`
+  - Timestamps added to all log entries
+  - Automatic creation of `logs/` directory if missing
+
+### Changed
+- Added visual spacing after error-only output
+- Standardized output handling across all system info functions
+
 ## [1.1.1] - 2025-04-29
 ### Changed
 - Added docstrings to functions, following PEP 257 formatting guidelines for documentation

@@ -14,7 +14,7 @@
 ## CLI Usage
 
 ```bash
-python sysmon.py [--disk] [--mem] [--cpu] [--net] [--all] [--version]
+python sysmon.py [--disk] [--mem] [--cpu] [--net] [--all] [--version] [--log]
 ```
 
 - `--disk` – Show disk usage
@@ -23,11 +23,12 @@ python sysmon.py [--disk] [--mem] [--cpu] [--net] [--all] [--version]
 - `--net` – Show network information (hostname, local/public IP)
 - `--all` – Show all metrics (default)
 - `--version` – Show the current version of SysMon
+- `--log` – Save output and errors to a timestamped log file (`logs/sysmon.log`)
 
 ## Example Output
 
 ```
-================== System Monitor - v1.1.0 ==================
+================== System Monitor - v1.2.0 ==================
 
 Disk Usage:
 | Filesystem | Size | Used | Avail | Use% | Mounted on |
@@ -69,6 +70,14 @@ pip install -r requirements.txt
 
 ```bash
 python sysmon.py --all
+```
+
+## Logging
+
+To optionally log output and errors to a file for later review:
+
+```bash
+python sysmon.py --all --log
 ```
 
 ## License
