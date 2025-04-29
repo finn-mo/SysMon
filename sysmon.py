@@ -13,8 +13,6 @@ Output is formatted using tabulate and colorized using colorama for readability.
 import socket
 import argparse
 import urllib.request
-import os
-from datetime import datetime
 
 import psutil
 from tabulate import tabulate
@@ -25,6 +23,7 @@ VERSION = 'v1.1.1'
 
 
 def main():
+    """Get CLI arguments and display selected system info."""
     args = get_args()
 
     display_flags = ['disk', 'mem', 'cpu', 'net', 'all']
@@ -64,7 +63,7 @@ def show_header():
 
 
 def show_disk_usage():
-    """Show total disk space, used, free, and usage %."""
+    """Show total disk space, used space, free space, and percentage of disk space used."""
     table = []
     headers = ['Filesystem', 'Size', 'Used', 'Avail', 'Use%', 'Mounted on']
     for partition in psutil.disk_partitions(all=False):
@@ -87,7 +86,7 @@ def show_disk_usage():
 
 
 def show_memory_usage():
-    """Show total system memory, used, available."""
+    """Show total system memory, used memory, and available memory."""
     try:
         mem = psutil.virtual_memory()
         table = [[
@@ -106,7 +105,7 @@ def show_memory_usage():
 
 
 def show_cpu_load():
-    """Show % usage for each CPU core."""
+    """Show CPU load percentage for each core."""
     try:
         cores = psutil.cpu_percent(interval=1, percpu=True)
         table = [[f'Core {i}', f'{p:.1f}%'] for i, p in enumerate(cores)]
